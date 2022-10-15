@@ -1,0 +1,41 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "weather-display": {
+      "projectType": "library",
+      "root": "projects/weather-display",
+      "sourceRoot": "projects/weather-display/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/weather-display/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/weather-display/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/weather-display/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/weather-display/src/test.ts",
+            "tsConfig": "projects/weather-display/tsconfig.spec.json",
+            "karmaConfig": "projects/weather-display/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}
